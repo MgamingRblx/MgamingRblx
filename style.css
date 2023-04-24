@@ -1,28 +1,19 @@
-.heading{
-    font-size: 23px;
-    width: 100%;
-    margin: 0px;
+.heading
+{
+font-size: 23px;
+width: 100%;
+margin: 0px;
 }
-.note{
-    font-size: 15px;
-    color: black;
+
+#status
+{
+font-size: 18px;
 }
 body{
-    background-size: cover;
-}
-.div_speed_img, .div_volume_img{
-    width: 200px;
-    border-radius: 100px;
-}
-#speed, #volume{
-    font-size: 23px;
-    margin: 15px;
-}
-.play_button{
-    width: 130px;
-    font-size: 25px;
+    background-size:cover;
+    background-position:center;
 }
 canvas{
-    border: 5px solid white;
-    border-radius: 20px;
+    box-shadow:10px 10px 10px grey ;
+    border-radius:10px;
 }

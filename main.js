@@ -1,38 +1,28 @@
-song="";
-pulsoEx=0;
-pulsoEy=0;
-pulsoDx=0;
-pulsoDy=0;
-function preload(){
-    song= loadSound("music.mp3");
-}
-
+Status=""
 function setup(){
-    canvas=createCanvas(600,500);
+    canvas=createCanvas(640,420);
     canvas.center();
-    video= createCapture(VIDEO);
-    video.hide();
-    poseNet= ml5.poseNet(video,modelLoaded);
-    poseNet.on("pose",gotPoses);
+    detector=ml5.objectDetector("cocossd",modelLoaded)
+    document.getElementById("Status").innerHTML="Status:Detectando Objetos"
 }
-function modelLoaded(){
-    console.log("Pose Net foi inicializado.")
+function preload (){
+    img=loadImage("dog_cat.jpg")
 }
 function draw(){
-    image(video, 0, 0, 600, 500);
+    image(img,0,0,640,420);
+    fill("red");
+    text("dog",45,75);
+    noFill()
+    stroke("red")
+    rect(30, 60, 450,350)
 }
-function play(){
-    song.play();
-    song.setVolume(1);
-    song.rate(1);
+function modelLoaded(){
+    console.log("Model carregado")
+    Status=true
+    ObjectDetector.detect(img,gotresult)
 }
-function gotPoses(){
-    if(results.length>0){
-        console.log(results);
-        pulsoEx=results[0].pose.leftWrist.x;
-        pulsoEy=results[0].pose.leftWrist.y;
-        pulsoDx=results[0].pose.rightWrist.x;
-        pulsoDy=results[0].pose.rightWrist.y;
-        
-    }
+function gotResult(error,results){
+if(error){}
+console.log(error)
 }
+console.log(results)
